@@ -11,4 +11,9 @@ public abstract class MixinEntity {
     private double redirectClamp(double value, double min, double max) {
         return value;
     }
+
+    @Redirect(method = "readNbt", at = @At(target = "Lnet/minecraft/util/math/MathHelper;clamp(DDD)D", value = "INVOKE"))
+    private double redirectClampReadNbt(double value, double min, double max) {
+        return value;
+    }
 }
